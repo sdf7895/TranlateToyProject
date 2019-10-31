@@ -9,4 +9,6 @@ public interface TotalPresent {
     interface GetData{
         void getData(String data);
     }
+
+
 }

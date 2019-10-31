@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.toyproject.MainActivity;
 import com.example.toyproject.Present.MyPresent;
 import com.example.toyproject.Present.TotalPresent;
 import com.example.toyproject.R;
@@ -36,6 +37,13 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
             @Override
             public void onClick(View v) {
                 setData();
+            }
+        });
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
