@@ -1,8 +1,9 @@
 package com.example.toyproject.retrofit2;
 
+import com.example.toyproject.Present.TotalPresent;
 import com.example.toyproject.retrofit2.retrofit2Interface.PapagoService;
 import com.example.toyproject.retrofit2.retrofit2Interface.TranslateService;
-import com.example.toyproject.view.ViewInterface.ToShow;
+
 
 import java.util.HashMap;
 
@@ -13,11 +14,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Translate implements TranslateService {
-    ToShow toShow;
     Retrofit retrofit;
+    TotalPresent.GetData present;
 
-    public Translate(ToShow toShow) {
-        this.toShow = toShow;
+    public Translate(TotalPresent.GetData present) {
+        this.present = present;
     }
 
     public void translatedata(String change, String text){
@@ -40,7 +41,7 @@ public class Translate implements TranslateService {
                     Result result = response.body();
                     Message message = result.getMessage();
                     DetailData detailData = message.getDetailData();
-                    toShow.toShow(detailData.getTranslatedText());
+                    present.getData(detailData.getTranslatedText());
                 }
             }
 

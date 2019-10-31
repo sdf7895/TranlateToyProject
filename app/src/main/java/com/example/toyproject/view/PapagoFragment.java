@@ -1,5 +1,6 @@
 package com.example.toyproject.view;
 
+import android.arch.lifecycle.ViewModel;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,14 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.toyproject.Present.MyPresent;
+import com.example.toyproject.Present.TotalPresent;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
 import com.example.toyproject.retrofit2.Translate;
-import com.example.toyproject.view.ViewInterface.ToShow;
 
-import retrofit2.Retrofit;
 
-public class PapagoFragment extends Fragment implements ToShow {
+public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     PapagoFragmentBinding binding;
     Translate translate;
 
@@ -42,9 +43,8 @@ public class PapagoFragment extends Fragment implements ToShow {
     }
 
     public void setData(){
-        translate = new Translate(this);
-        translate.translatedata(binding.editText2.getText().toString(),binding.editText.getText().toString());
-
+        MyPresent myPresent = new MyPresent(this);
+        myPresent.setData(binding.editText2.getText().toString(),binding.editText.getText().toString());
     }
 
     public void toShow(String translatedata){
