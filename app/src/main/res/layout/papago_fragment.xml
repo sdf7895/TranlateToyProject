@@ -10,14 +10,14 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editview"
+            android:id="@+id/editText"
             android:textSize="20dp"
             android:hint="@string/changeko"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
         <EditText
-            android:id="@+id/editview2"
+            android:id="@+id/editText2"
             android:textSize="20dp"
             android:hint="@string/change"
             android:layout_width="match_parent"

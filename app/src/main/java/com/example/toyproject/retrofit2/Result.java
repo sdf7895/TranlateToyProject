@@ -1,4 +1,4 @@
-package com.example.toyproject.papagodata;
+package com.example.toyproject.retrofit2;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

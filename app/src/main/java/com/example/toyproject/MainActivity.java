@@ -3,7 +3,7 @@ package com.example.toyproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.toyproject.databinding.PapagoFragmentBinding;
+import com.example.toyproject.view.PapagoFragment;
 
 public class MainActivity extends AppCompatActivity {
     PapagoFragment papagoFragment;

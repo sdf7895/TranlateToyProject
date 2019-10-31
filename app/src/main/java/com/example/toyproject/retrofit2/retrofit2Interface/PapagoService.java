@@ -1,6 +1,6 @@
-package com.example.toyproject.retrofit2;
+package com.example.toyproject.retrofit2.retrofit2Interface;
 
-import com.example.toyproject.papagodata.Result;
+import com.example.toyproject.retrofit2.Result;
 
 import java.util.HashMap;
 
