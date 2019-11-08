@@ -3,10 +3,12 @@ package com.example.toyproject.Model;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
 public class LanguageRepository {
+    private static final String TAG = LanguageRepository.class.getCanonicalName();
 
     private final LanguageDao languageDao;
     private final LiveData<List<Language>> allLanguage;
@@ -20,15 +22,16 @@ public class LanguageRepository {
     public void insert(Language language) {
         new AsyncTask<Language, Void, Long>(){
             @Override
-            protected void onPostExecute(Long aLong) {
-                super.onPostExecute(aLong);
-            }
-
-            @Override
             protected Long doInBackground(Language... languages) {
                 if(languageDao == null)
                     return -1L;
                 return languageDao.insert(languages[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Long aLong) {
+                super.onPostExecute(aLong);
+                Log.d(TAG, "insert : " + aLong);
             }
         }.execute(language);
     }
@@ -38,6 +41,7 @@ public class LanguageRepository {
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
+                Log.d(TAG, "update : " + integer);
             }
 
             @Override
@@ -54,6 +58,7 @@ public class LanguageRepository {
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
+                Log.d(TAG, "deleteAll : " + integer);
             }
 
             @Override
@@ -70,6 +75,7 @@ public class LanguageRepository {
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
+                Log.d(TAG, "deleteUser : " + integer);
             }
 
             @Override

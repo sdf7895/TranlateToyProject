@@ -4,14 +4,12 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 
 @Database(entities = {Language.class}, version = 1)
 public abstract class LanguageDataBase extends RoomDatabase {
     public abstract LanguageDao languageDao();
 
     private static volatile LanguageDataBase INSTANCE;
-
 
     static LanguageDataBase getDatabase(final Context context){
         if(INSTANCE == null){

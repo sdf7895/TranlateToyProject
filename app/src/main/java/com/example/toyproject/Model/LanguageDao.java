@@ -22,6 +22,6 @@ public interface LanguageDao {
     @Query("DELETE FROM language_table WHERE id = :id")
     int deleteLanguage(int id);
 
-    @Query("SELECT * from language_table ORDER BY language ASC")
+    @Query("SELECT * from language_table ORDER BY translatedText ASC")
     LiveData<List<Language>> getAllLanguage();
 }

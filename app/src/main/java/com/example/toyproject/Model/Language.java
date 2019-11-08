@@ -5,6 +5,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "language_table")
 public class Language {
 
@@ -13,35 +16,23 @@ public class Language {
     private int id;
 
     @NonNull
-    @ColumnInfo(name = "language")
-    private String language;
+    @SerializedName("translatedText")
+    @ColumnInfo(name = "translatedText")
+    @Expose
+    private String translatedText;
+
+
+    //----------------set --------------
+    public void setId(int id) { this.id = id; }
+
+    public void setTranslatedText(@NonNull String translatedText) { this.translatedText = translatedText; }
+
+
+    //----------------get --------------
+    public int getId() { return id; }
 
     @NonNull
-    @ColumnInfo(name = "language2")
-    private String language2;
+    public String getTranslatedText() { return translatedText; }
 
-    public String getLanguage() {
-        return language;
-    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setLanguage(@NonNull String language) {
-        this.language = language;
-    }
-
-    @NonNull
-    public String getLanguage2() {
-        return language2;
-    }
-
-    public void setLanguage2(@NonNull String language2) {
-        this.language2 = language2;
-    }
 }

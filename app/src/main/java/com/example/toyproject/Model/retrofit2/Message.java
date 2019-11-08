@@ -1,5 +1,6 @@
-package com.example.toyproject.retrofit2;
+package com.example.toyproject.Model.retrofit2;
 
+import com.example.toyproject.Model.Language;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,7 +17,7 @@ public class Message {
         private String version;
         @SerializedName("result")
         @Expose
-        private DetailData detailData;
+        private Language language;
 
         public String getType() {
             return type;
@@ -42,13 +43,12 @@ public class Message {
             this.version = version;
         }
 
-        public DetailData getDetailData() {
-            return detailData;
+        public Language getLanguage() {
+            return language;
         }
 
-        public void setdetailData(DetailData detailData) {
-            this.detailData = detailData;
+        public void setLanguage(Language language) {
+            this.language = language;
         }
-
-    }
+}
 

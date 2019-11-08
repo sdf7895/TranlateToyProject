@@ -1,4 +1,4 @@
-package com.example.toyproject.Model.RecyclerView;
+package com.example.toyproject.Model.RecyclerView.RecyclerViewAdapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -30,9 +30,13 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i) {
-        Language language = items.get(i);
-        viewHolder.binding.changelg.setText(language.getLanguage());
-        viewHolder.binding.changelg2.setText(language.getLanguage2());
+        if(items != null) {
+            Language language = items.get(i);
+            viewHolder.languageItemsBinding.changelg2.setText(language.getTranslatedText());
+        }else{
+            viewHolder.languageItemsBinding.changelg.setText("No Language");
+
+        }
     }
 
     @Override
@@ -54,11 +58,11 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        LanguageItemsBinding binding;
+        LanguageItemsBinding languageItemsBinding;
 
         public MyViewHolder(@NonNull LanguageItemsBinding binding) {
             super(binding.getRoot());
-            this.binding = binding;
+            this.languageItemsBinding = binding;
         }
     }
 

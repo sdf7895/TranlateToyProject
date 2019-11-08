@@ -4,8 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
-
-import com.example.toyproject.Present.TotalPresent;
+import android.util.Log;
 
 import java.util.List;
 

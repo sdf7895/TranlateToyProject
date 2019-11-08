@@ -2,7 +2,13 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="activity" type="com.example.toyproject.MainActivity"/>
+        <variable
+            name="papagoFragment" type="com.example.toyproject.view.PapagoFragment" />
 
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,6 +52,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="번역"
+            android:onClick="@{papagoFragment::setData}"
             android:textSize="20dp"/>
 
         <Button
@@ -55,6 +62,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="번역했던 문장 List"
+            android:onClick="@{activity::setFragment}"
             android:textSize="20dp"/>
 
     </LinearLayout>

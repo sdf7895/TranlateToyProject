@@ -1,6 +1,5 @@
 package com.example.toyproject.view;
 
-import android.arch.lifecycle.ViewModel;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,13 +14,11 @@ import com.example.toyproject.Present.MyPresent;
 import com.example.toyproject.Present.TotalPresent;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
-import com.example.toyproject.retrofit2.Translate;
 
 
 public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     PapagoFragmentBinding binding;
-    Translate translate;
-
+    MyPresent myPresent;
     public static PapagoFragment newInstance(){
         PapagoFragment papagoFragment = new PapagoFragment();
 
@@ -32,26 +29,15 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.papago_fragment,container,false);
+        binding.setActivity((MainActivity)getActivity());
+        binding.setPapagoFragment(this);
 
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setData();
-            }
-        });
-
-        binding.button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return binding.getRoot();
     }
 
-    public void setData(){
-        MyPresent myPresent = new MyPresent(this);
+    public void setData(View view){
+        myPresent = new MyPresent(this);
         myPresent.setData(binding.editText2.getText().toString(),binding.editText.getText().toString());
     }
 
