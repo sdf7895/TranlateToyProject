@@ -1,17 +1,14 @@
 package com.example.toyproject.Present;
 
 import com.example.toyproject.Model.retrofit2.Translate;
-import com.example.toyproject.view.RecyclerView;
 
 public class MyPresent implements TotalPresent.GetData {
     private TotalPresent.Toshow toShow;
-    private Translate translate;
-    private RecyclerView recyclerView;
+    Translate translate;
 
     public MyPresent(TotalPresent.Toshow toShow) {
         this.toShow = toShow;
         translate = new Translate(this);
-        recyclerView = RecyclerView.newInstance();
     }
 
     public void setData(String change, String text){

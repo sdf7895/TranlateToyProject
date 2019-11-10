@@ -43,7 +43,8 @@ public class Translate implements TranslateService {
                 if(response.isSuccessful()){
                     Result result = response.body();
                     Message message = result.getMessage();
-                    Language language = message.getLanguage();
+                    DetailData detailData = message.getDetailData();
+                    present.getData(detailData.getTranslatedText());
                 }
             }
 

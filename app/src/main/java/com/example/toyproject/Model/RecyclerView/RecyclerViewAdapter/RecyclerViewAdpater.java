@@ -32,6 +32,7 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i) {
         if(items != null) {
             Language language = items.get(i);
+            viewHolder.languageItemsBinding.changelg.setText(language.getText());
             viewHolder.languageItemsBinding.changelg2.setText(language.getTranslatedText());
         }else{
             viewHolder.languageItemsBinding.changelg.setText("No Language");

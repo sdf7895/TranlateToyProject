@@ -16,20 +16,31 @@ public class Language {
     private int id;
 
     @NonNull
-    @SerializedName("translatedText")
+    @ColumnInfo(name = "text")
+    private String text;
+
+    @NonNull
     @ColumnInfo(name = "translatedText")
-    @Expose
     private String translatedText;
 
+    public Language(@NonNull String text, @NonNull String translatedText) {
+        this.text = text;
+        this.translatedText = translatedText;
+    }
 
     //----------------set --------------
     public void setId(int id) { this.id = id; }
+
+    public void setText(@NonNull String text) {this.text = text;}
 
     public void setTranslatedText(@NonNull String translatedText) { this.translatedText = translatedText; }
 
 
     //----------------get --------------
     public int getId() { return id; }
+
+    @NonNull
+    public String getText() { return text; }
 
     @NonNull
     public String getTranslatedText() { return translatedText; }

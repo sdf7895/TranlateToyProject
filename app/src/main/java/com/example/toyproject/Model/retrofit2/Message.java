@@ -17,7 +17,7 @@ public class Message {
         private String version;
         @SerializedName("result")
         @Expose
-        private Language language;
+        private DetailData detailData;
 
         public String getType() {
             return type;
@@ -43,12 +43,12 @@ public class Message {
             this.version = version;
         }
 
-        public Language getLanguage() {
-            return language;
-        }
+    public DetailData getDetailData() {
+        return detailData;
+    }
 
-        public void setLanguage(Language language) {
-            this.language = language;
-        }
+    public void setDetailData(DetailData detailData) {
+        this.detailData = detailData;
+    }
 }
 

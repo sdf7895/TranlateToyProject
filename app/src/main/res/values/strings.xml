@@ -3,7 +3,7 @@
     <string name="manual">en =영어\nzh-CN =중국어간체\nzh-TW =중국어번체\nes =스페인어\nfr =프랑스어\nvi =베트남어\nth =태국어\nid =인도네시아어</string>
     <string name="changeko">번역할 한국어를입력해주세요</string>
     <string name="change">영어로 번역이필요하다면 en 입력</string>
-    <string name="language">한국말:</string>
+    <string name="language">입력:</string>
     <string name="language2">번역된 언어:</string>
 
 </resources>
