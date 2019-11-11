@@ -6,85 +6,37 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class LanguageRepository {
     private static final String TAG = LanguageRepository.class.getCanonicalName();
 
     private final LanguageDao languageDao;
     private final LiveData<List<Language>> allLanguage;
+    private ExecutorService executorService;
 
     LanguageRepository(Application application){
         LanguageDataBase db = LanguageDataBase.getDatabase(application);
         languageDao = db.languageDao();
         allLanguage = languageDao.getAllLanguage();
+        executorService = Executors.newSingleThreadExecutor();
     }
 
     public void insert(Language language) {
-        new AsyncTask<Language, Void, Long>(){
-            @Override
-            protected Long doInBackground(Language... languages) {
-                if(languageDao == null)
-                    return -1L;
-                return languageDao.insert(languages[0]);
-            }
-
-            @Override
-            protected void onPostExecute(Long aLong) {
-                super.onPostExecute(aLong);
-                Log.d(TAG, "insert : " + aLong);
-            }
-        }.execute(language);
+        executorService.execute(() -> languageDao.insert(language));
     }
 
     public void update(Language language){
-        new AsyncTask<Language, Void, Integer>(){
-            @Override
-            protected void onPostExecute(Integer integer) {
-                super.onPostExecute(integer);
-                Log.d(TAG, "update : " + integer);
-            }
-
-            @Override
-            protected Integer doInBackground(Language... languages) {
-                if(languageDao == null)
-                    return -1;
-                return languageDao.update(languages[0]);
-            }
-        }.execute(language);
+        executorService.execute(() -> languageDao.update(language));
     }
 
     public void deleteAll() {
-        new AsyncTask<Void, Void, Integer>() {
-            @Override
-            protected void onPostExecute(Integer integer) {
-                super.onPostExecute(integer);
-                Log.d(TAG, "deleteAll : " + integer);
-            }
-
-            @Override
-            protected Integer doInBackground(Void... voids) {
-                if(languageDao == null)
-                    return -1;
-                return languageDao.deleteAll();
-            }
-        }.execute();
+        executorService.execute(() -> languageDao.deleteAll());
     }
 
-    public void deleteLanguage(int id){
-        new AsyncTask<Integer, Void, Integer>(){
-            @Override
-            protected void onPostExecute(Integer integer) {
-                super.onPostExecute(integer);
-                Log.d(TAG, "deleteUser : " + integer);
-            }
-
-            @Override
-            protected Integer doInBackground(Integer... integers) {
-                if(languageDao == null)
-                    return -1;
-                return languageDao.deleteLanguage(integers[0]);
-            }
-        }.execute(id);
+    public void deleteLanguage(Language language){
+        executorService.execute(() -> languageDao.deleteLanguage(language));
     }
 
     public LiveData<List<Language>> getAllLanguage(){

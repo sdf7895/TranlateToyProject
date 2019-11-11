@@ -16,7 +16,7 @@ public class MyPresent implements TotalPresent.GetData {
     }
 
     @Override
-    public void getData(String data) {
-        toShow.toShow(data);
+    public void getData(String text,String data) {
+        toShow.toShow(text,data);
     }
 }

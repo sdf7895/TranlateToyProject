@@ -31,8 +31,8 @@ public class Model extends AndroidViewModel {
         repository.deleteAll();
     }
 
-    public void deleteUser(int id) {
-        repository.deleteLanguage(id);
+    public void deleteUser(Language language) {
+        repository.deleteLanguage(language);
     }
 
     public LiveData<List<Language>> getAllLanguage() {

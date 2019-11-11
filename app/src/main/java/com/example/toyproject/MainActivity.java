@@ -1,6 +1,5 @@
 package com.example.toyproject;
 
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,17 +26,17 @@ public class MainActivity extends AppCompatActivity implements MainInterface{
 
     }
 
-    @Override
-    public void setData(String change,String text){
-        recyclerView.postData(change,text);
-    }
-
     public void setFragment(View view){
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment,recyclerView)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void setData(String text,String change){
+        recyclerView.postData(text,change);
     }
 
 }

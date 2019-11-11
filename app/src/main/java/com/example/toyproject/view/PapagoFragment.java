@@ -56,12 +56,12 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     public void setData(View view){
         myPresent = new MyPresent(this);
         myPresent.setData(binding.editText2.getText().toString(),binding.editText.getText().toString());
-        callback.setData(binding.editText2.getText().toString(),binding.editText.getText().toString());
     }
 
     @Override
-    public void toShow(String translatedata){
+    public void toShow(String text,String translatedata){
         binding.textView2.setText(translatedata);
+        callback.setData(text,translatedata);
     }
 
 }

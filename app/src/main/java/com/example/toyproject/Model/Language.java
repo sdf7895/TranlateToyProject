@@ -23,11 +23,6 @@ public class Language {
     @ColumnInfo(name = "translatedText")
     private String translatedText;
 
-    public Language(@NonNull String text, @NonNull String translatedText) {
-        this.text = text;
-        this.translatedText = translatedText;
-    }
-
     //----------------set --------------
     public void setId(int id) { this.id = id; }
 
