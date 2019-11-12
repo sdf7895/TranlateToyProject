@@ -25,6 +25,7 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
+                android:gravity="left|center"
                 android:text="한국어"
                 android:textSize="20dp"/>
 
@@ -41,6 +42,7 @@
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
                 android:onClick="@{activity::setSeletFragment}"
+                android:gravity="right|center"
                 android:text="영어"
                 android:textSize="20dp" />
 
@@ -61,6 +63,8 @@
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@null"
                 android:hint="텍스트를입력해주세요"
                 android:textSize="30dp" />
