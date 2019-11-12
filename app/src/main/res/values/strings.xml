@@ -6,4 +6,12 @@
     <string name="language">입력:</string>
     <string name="language2">번역된 언어:</string>
 
+    ----------------color----------------------------
+    <color name="layoutcolor">#585858</color>
+    <color name="limpidity">#FFFFFF</color>
+    <color name="bule">#2E64FE</color>
+    <color name="grey">#585858</color>
+    <color name="smallgrey">#E6E6E6</color>
+
+
 </resources>

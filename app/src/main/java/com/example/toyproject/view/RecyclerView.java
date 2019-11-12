@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.toyproject.Model.Language;
 import com.example.toyproject.Model.Model;
@@ -76,11 +75,6 @@ public class RecyclerView extends Fragment {
     }
 
     public void setOnItem(){
-        recyclerViewAdpater.setOnItemClickListener(new RecyclerViewAdpater.OnItemClickListener() {
-            @Override
-            public void onItemClick(android.support.v7.widget.RecyclerView.ViewHolder viewHolder, View view, int position,Language language){
-                model.deleteUser(language);
-            }
-        });
+        recyclerViewAdpater.setOnItemClickListener((viewHoder,view,position,language) -> model.deleteUser(language));
     }
 }

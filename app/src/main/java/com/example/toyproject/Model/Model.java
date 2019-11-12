@@ -19,23 +19,13 @@ public class Model extends AndroidViewModel {
         allLanguage = repository.getAllLanguage();
     }
 
-    public void insert(Language language) {
-        repository.insert(language);
-    }
+    public void insert(Language language) {repository.insert(language);}
 
-    public void update(Language language) {
-        repository.update(language);
-    }
+    public void update(Language language) {repository.update(language);}
 
-    public void deleteAll() {
-        repository.deleteAll();
-    }
+    public void deleteAll() {repository.deleteAll();}
 
-    public void deleteUser(Language language) {
-        repository.deleteLanguage(language);
-    }
+    public void deleteUser(Language language) {repository.deleteLanguage(language);}
 
-    public LiveData<List<Language>> getAllLanguage() {
-        return allLanguage;
-    }
+    public LiveData<List<Language>> getAllLanguage() {return allLanguage;}
 }

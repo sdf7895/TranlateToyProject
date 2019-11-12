@@ -104,14 +104,10 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
         }
 
         @Override
-        public int getOldListSize() {
-            return oldPosts.size();
-        }
+        public int getOldListSize() {return oldPosts.size();}
 
         @Override
-        public int getNewListSize() {
-            return newPosts.size();
-        }
+        public int getNewListSize() {return newPosts.size();}
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {

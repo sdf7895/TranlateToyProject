@@ -19,9 +19,10 @@ import com.example.toyproject.databinding.PapagoFragmentBinding;
 
 
 public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
-    PapagoFragmentBinding binding;
-    MyPresent myPresent;
-    MainInterface callback;
+    private PapagoFragmentBinding binding;
+    private MyPresent myPresent;
+    private MainInterface callback;
+    private String change = "en";
 
     @Override
     public void onAttach(Context context) {
@@ -50,18 +51,60 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
         binding.setPapagoFragment(this);
         binding.setActivity((MainActivity)getActivity());
 
+        changeText();
+
         return binding.getRoot();
     }
 
     public void setData(View view){
         myPresent = new MyPresent(this);
-        myPresent.setData(binding.editText2.getText().toString(),binding.editText.getText().toString());
+        myPresent.setData(change,binding.editText.getText().toString());
+    }
+
+    public void getData(String change){
+        this.change = change;
     }
 
     @Override
     public void toShow(String text,String translatedata){
         binding.textView2.setText(translatedata);
         callback.setData(text,translatedata);
+    }
+
+    public void changeText(){
+        switch(change){
+            case "en":
+                binding.textButton2.setText("영어");
+                break;
+
+            case "zh-CN":
+                binding.textButton2.setText("중국어(간체)");
+                break;
+
+            case "zh-TW":
+                binding.textButton2.setText("중국어(번체)");
+                break;
+
+            case "es":
+                binding.textButton2.setText("스페인어");
+                break;
+
+            case "fr":
+                binding.textButton2.setText("프랑스어");
+                break;
+
+            case "vi":
+                binding.textButton2.setText("베트남어");
+                break;
+
+            case "th":
+                binding.textButton2.setText("태국어");
+                break;
+
+            case "id":
+                binding.textButton2.setText("인도네시아어");
+                break;
+        }
     }
 
 }

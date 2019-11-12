@@ -3,9 +3,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/language_border"
         android:orientation="vertical">
 
         <LinearLayout
@@ -19,20 +18,13 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/changelg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:textStyle="bold"
-                    android:text="@string/language"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/changelg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="20dp" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,21 +33,22 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/changelg"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:textStyle="bold"
-                    android:text="@string/language2"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/changelg2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="20dp" />
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/language_border">
 
         </LinearLayout>
 
