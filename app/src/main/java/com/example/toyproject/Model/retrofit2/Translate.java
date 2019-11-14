@@ -1,11 +1,8 @@
 package com.example.toyproject.Model.retrofit2;
 
-import com.example.toyproject.Model.Language;
 import com.example.toyproject.Model.retrofit2.retrofit2Interface.PapagoService;
 import com.example.toyproject.Model.retrofit2.retrofit2Interface.TranslateService;
 import com.example.toyproject.Present.TotalPresent;
-import com.example.toyproject.view.RecyclerView;
-
 
 import java.util.HashMap;
 
@@ -24,7 +21,7 @@ public class Translate implements TranslateService {
     }
 
     @Override
-    public void translatedata(String change, String text){
+    public void translatedata(String setLanguage,String change, String text){
         retrofit = new Retrofit.Builder()
                 .baseUrl(PapagoService.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -33,7 +30,7 @@ public class Translate implements TranslateService {
         PapagoService papagoService = retrofit.create(PapagoService.class);
 
         HashMap<String,Object> param = new HashMap<>();
-        param.put("source","ko");
+        param.put("source",setLanguage);
         param.put("target",change);
         param.put("text",text);
 

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.toyproject.Model.Language;
 import com.example.toyproject.databinding.LanguageSelectItemsBinding;
 import java.util.List;
 

@@ -12,15 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.toyproject.databinding.ActivityMainBinding;
-import com.example.toyproject.view.LanguageSelectView;
+import com.example.toyproject.view.ChangeLanguageSelectView;
 import com.example.toyproject.view.PapagoFragment;
 import com.example.toyproject.view.RecyclerView;
+import com.example.toyproject.view.SetLanguageSelectView;
 
 public class MainActivity extends AppCompatActivity implements MainInterface, NavigationView.OnNavigationItemSelectedListener {
-    PapagoFragment papagoFragment;
-    RecyclerView recyclerView;
-    LanguageSelectView languageSelectView;
-    ActivityMainBinding binding;
+    private PapagoFragment papagoFragment;
+    private RecyclerView recyclerView;
+    private ChangeLanguageSelectView changeLanguageSelectView;
+    private SetLanguageSelectView setLanguageSelectView;
+    private ActivityMainBinding binding;
+    private boolean state = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,14 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
 
         recyclerView = RecyclerView.newInstance();
         papagoFragment = PapagoFragment.newInstance();
-        languageSelectView = LanguageSelectView.languageSelectView();
+        changeLanguageSelectView = ChangeLanguageSelectView.ChangelanguageSelectView();
+        setLanguageSelectView = SetLanguageSelectView.setLanguageSelectView();
 
-        binding.toolbar.setTitle("번역");
+
+
+        state = true;
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle("번역");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
@@ -86,15 +93,14 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
         return true;
     }
 
-
-    public void startFragment() {
+    private void startFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment, papagoFragment)
                 .commit();
     }
 
-    public void setFragment() {
+    private void setFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment, recyclerView)
@@ -106,7 +112,16 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
         binding.toolbar.setTitle("모든언어");
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment, languageSelectView)
+                .replace(R.id.fragment, changeLanguageSelectView)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void setSeletFragment2(View view) {
+        binding.toolbar.setTitle("모든언어");
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment, setLanguageSelectView)
                 .addToBackStack(null)
                 .commit();
     }
@@ -116,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
 
     @Override
     public void setData(String change) {papagoFragment.getData(change);}
+
+    @Override
+    public void setData2(String setLanguage) {papagoFragment.getData2(setLanguage);}
 }
 
 

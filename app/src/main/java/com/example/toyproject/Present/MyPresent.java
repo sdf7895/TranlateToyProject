@@ -11,8 +11,8 @@ public class MyPresent implements TotalPresent.GetData {
         translate = new Translate(this);
     }
 
-    public void setData(String change, String text){
-        translate.translatedata(change,text);
+    public void setData(String setLanguage,String change, String text){
+        translate.translatedata(setLanguage,change,text);
     }
 
     @Override

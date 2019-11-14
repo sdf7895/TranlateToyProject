@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import com.example.toyproject.MainActivity;
 import com.example.toyproject.MainInterface;
@@ -16,13 +18,16 @@ import com.example.toyproject.Present.MyPresent;
 import com.example.toyproject.Present.TotalPresent;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
+import com.example.toyproject.view.Utils.AnimationUtil;
+import com.example.toyproject.view.Utils.ChangeUtil;
 
 
 public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     private PapagoFragmentBinding binding;
     private MyPresent myPresent;
     private MainInterface callback;
-    private String change = "en";
+    private String changeLanguage = "en";
+    private String setLanguage ="ko";
 
     @Override
     public void onAttach(Context context) {
@@ -51,60 +56,26 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
         binding.setPapagoFragment(this);
         binding.setActivity((MainActivity)getActivity());
 
-        changeText();
+        ChangeUtil.changeText(setLanguage,binding);
+        ChangeUtil.changeText2(changeLanguage,binding);
 
         return binding.getRoot();
     }
 
     public void setData(View view){
         myPresent = new MyPresent(this);
-        myPresent.setData(change,binding.editText.getText().toString());
+        myPresent.setData(setLanguage,changeLanguage,binding.editText.getText().toString());
     }
 
-    public void getData(String change){
-        this.change = change;
-    }
+    public void getData(String changeLanguage){this.changeLanguage = changeLanguage;}
+    public void getData2(String setLanguage){this.setLanguage = setLanguage;}
 
     @Override
     public void toShow(String text,String translatedata){
         binding.textView2.setText(translatedata);
         callback.setData(text,translatedata);
+
+        binding.languagewindow.startAnimation(AnimationUtil.AlpahAnimationutil());
+        binding.languagewindow.setVisibility(View.VISIBLE);
     }
-
-    public void changeText(){
-        switch(change){
-            case "en":
-                binding.textButton2.setText("영어");
-                break;
-
-            case "zh-CN":
-                binding.textButton2.setText("중국어(간체)");
-                break;
-
-            case "zh-TW":
-                binding.textButton2.setText("중국어(번체)");
-                break;
-
-            case "es":
-                binding.textButton2.setText("스페인어");
-                break;
-
-            case "fr":
-                binding.textButton2.setText("프랑스어");
-                break;
-
-            case "vi":
-                binding.textButton2.setText("베트남어");
-                break;
-
-            case "th":
-                binding.textButton2.setText("태국어");
-                break;
-
-            case "id":
-                binding.textButton2.setText("인도네시아어");
-                break;
-        }
-    }
-
 }
