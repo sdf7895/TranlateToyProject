@@ -9,8 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 
 import com.example.toyproject.MainActivity;
 import com.example.toyproject.MainInterface;
@@ -20,7 +18,6 @@ import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
 import com.example.toyproject.view.Utils.AnimationUtil;
 import com.example.toyproject.view.Utils.ChangeUtil;
-
 
 public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     private PapagoFragmentBinding binding;
@@ -73,9 +70,10 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
     @Override
     public void toShow(String text,String translatedata){
         binding.textView2.setText(translatedata);
-        callback.setData(text,translatedata);
+        callback.setData(text,translatedata); //메인액티비티에게 데이터를 전달하는 역할 잠깐 keep
 
         binding.languagewindow.startAnimation(AnimationUtil.AlpahAnimationutil());
         binding.languagewindow.setVisibility(View.VISIBLE);
     }
+
 }

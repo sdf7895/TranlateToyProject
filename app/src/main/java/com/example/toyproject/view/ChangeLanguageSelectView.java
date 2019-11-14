@@ -18,6 +18,7 @@ import com.example.toyproject.databinding.LanguageSelectViewBinding;
 import com.example.toyproject.view.RecyclerViewAdapter.LanguageSelectAdapter;
 import com.example.toyproject.view.Utils.ChangeUtil;
 import com.example.toyproject.view.Utils.HideUtil;
+import com.example.toyproject.view.Utils.LinearLayoutManagerUtil;
 import com.example.toyproject.view.Utils.SetLanguageList.ListLanguage;
 
 import java.util.ArrayList;
@@ -60,15 +61,14 @@ public class ChangeLanguageSelectView extends Fragment {
 
         setOnItem();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        languageSelectViewBinding.recyclerview.setLayoutManager(linearLayoutManager);
-        languageSelectViewBinding.recyclerview.setAdapter(languageSelectAdapter);
+        LinearLayoutManagerUtil.SetandChangeLanguageSelectViewUtil(getContext(),languageSelectViewBinding,languageSelectAdapter);
 
         return languageSelectViewBinding.getRoot();
     }
 
     public void setOnItem(){
-        languageSelectAdapter.setOnItemClickListener((viewHolder, view, position) ->
-                {ChangeUtil.selectViewLanguage(callback,position);HideUtil.hide(fragmentManager,this);});
+        languageSelectAdapter.setOnItemClickListener((viewHolder, view, position) -> {
+                ChangeUtil.selectViewLanguage(callback,position);
+                HideUtil.hide(fragmentManager,this);});
     }
 }

@@ -1,5 +1,7 @@
 package com.example.toyproject;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,10 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.toyproject.Model.Language;
+import com.example.toyproject.Model.Model;
 import com.example.toyproject.databinding.ActivityMainBinding;
 import com.example.toyproject.view.ChangeLanguageSelectView;
 import com.example.toyproject.view.PapagoFragment;
 import com.example.toyproject.view.RecyclerView;
+import com.example.toyproject.view.RecyclerViewAdapter.RecyclerViewAdpater;
 import com.example.toyproject.view.SetLanguageSelectView;
 
 public class MainActivity extends AppCompatActivity implements MainInterface, NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     private ChangeLanguageSelectView changeLanguageSelectView;
     private SetLanguageSelectView setLanguageSelectView;
     private ActivityMainBinding binding;
-    private boolean state = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
         changeLanguageSelectView = ChangeLanguageSelectView.ChangelanguageSelectView();
         setLanguageSelectView = SetLanguageSelectView.setLanguageSelectView();
 
-
-
-        state = true;
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setTitle("번역");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -127,13 +128,29 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     }
 
     @Override
-    public void setData(String text, String change) {recyclerView.postData(text, change);}
+    public void setData(String text, String change) {
+        Test(text,change);
+    }
 
     @Override
     public void setData(String change) {papagoFragment.getData(change);}
 
     @Override
     public void setData2(String setLanguage) {papagoFragment.getData2(setLanguage);}
+
+    public void Test(String text,String change){
+        RecyclerViewAdpater recyclerViewAdpater = new RecyclerViewAdpater(getApplicationContext());
+        Model model = ViewModelProviders.of(this).get(Model.class);
+        model.getAllLanguage().observe(this, languages -> recyclerViewAdpater.setData(languages));
+
+        if(text.trim().length() == 0) return;
+        if(change.trim().length() == 0) return;
+
+        Language language = new Language();
+        language.setText(text);
+        language.setTranslatedText(change);
+        model.insert(language);
+    }
 }
 
 

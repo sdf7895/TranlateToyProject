@@ -3,10 +3,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
-            name="activity" type="com.example.toyproject.MainActivity" />
+            name="activity"
+            type="com.example.toyproject.MainActivity" />
+
         <variable
-            name="papagoFragment" type="com.example.toyproject.view.PapagoFragment" />
+            name="papagoFragment"
+            type="com.example.toyproject.view.PapagoFragment" />
 
     </data>
 
@@ -25,25 +29,24 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
-                android:onClick="@{activity::setSeletFragment2}"
                 android:gravity="left|center"
+                android:onClick="@{activity::setSeletFragment2}"
                 android:text="한국어"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <ImageButton
                 android:id="@+id/button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="@{papagoFragment::setData}"
-                />
+                android:onClick="@{papagoFragment::setData}" />
 
             <Button
                 android:id="@+id/textButton2"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
-                android:onClick="@{activity::setSeletFragment}"
                 android:gravity="right|center"
+                android:onClick="@{activity::setSeletFragment}"
                 android:text="영어"
                 android:textSize="20dp" />
 
@@ -63,7 +66,7 @@
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@null"
@@ -76,17 +79,17 @@
             android:id="@+id/languagewindow"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:background="@drawable/language_gradient"
             android:orientation="horizontal"
-            android:visibility="invisible"
-            android:background="@drawable/language_gradient">
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textSize="30dp"
-                android:layout_height="50dp"/>
+                android:textSize="30dp" />
 
         </LinearLayout>
 
