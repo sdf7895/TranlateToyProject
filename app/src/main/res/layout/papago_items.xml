@@ -4,7 +4,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:background="?attr/selectableItemBackground"
         android:orientation="vertical">
 
@@ -22,7 +22,7 @@
                     android:id="@+id/changelg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+
                     android:layout_marginLeft="10dp"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -48,8 +48,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/language_border">
+            android:layout_marginTop="5dp"
+            android:background="@color/smallgrey">
 
         </LinearLayout>
 

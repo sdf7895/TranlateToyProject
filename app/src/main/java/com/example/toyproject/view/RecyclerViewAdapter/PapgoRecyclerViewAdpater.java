@@ -9,22 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toyproject.Model.Language;
-import com.example.toyproject.Model.NoteRepository.NoteLanguage;
-import com.example.toyproject.databinding.LanguageItemsBinding;
+import com.example.toyproject.databinding.PapagoItemsBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpater.MyViewHolder> {
+public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecyclerViewAdpater.MyViewHolder> {
     Context context;
-    private List<NoteLanguage> items;
+    private List<Language> items;
     OnItemClickListener listener;
 
     public static interface OnItemClickListener {
-        void onItemClick(RecyclerView.ViewHolder viewHolder, View view, int position ,NoteLanguage notelanguage);
+        void onItemClick(RecyclerView.ViewHolder viewHolder, View view, int position, Language language);
     }
 
-    public RecyclerViewAdpater(Context context) {
+    public PapgoRecyclerViewAdpater(Context context) {
         this.context = context;
         this.items = new ArrayList<>();
     }
@@ -32,18 +31,18 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MyViewHolder(LanguageItemsBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false));
+        return new MyViewHolder(PapagoItemsBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int position) {
-        NoteLanguage noteLanguage = items.get(position);
-        viewHolder.languageItemsBinding.changelg.setText(noteLanguage.getText());
-        viewHolder.languageItemsBinding.changelg2.setText(noteLanguage.getTranslatedText());
+        Language language = items.get(position);
+        viewHolder.papagoItemsBinding.changelg.setText(language.getText());
+        viewHolder.papagoItemsBinding.changelg2.setText(language.getTranslatedText());
 
 
         viewHolder.setOnItemClickListener(listener);
-        viewHolder.bind(noteLanguage);
+        viewHolder.bind(language);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -55,7 +54,7 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
         return items.size();
     }
 
-    public void setData(List<NoteLanguage> newData) {
+    public void setData(List<Language> newData) {
         if (items != null) {
             PostDiffCallback postDiffCallback = new PostDiffCallback(items, newData);
             DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(postDiffCallback);
@@ -69,25 +68,25 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        LanguageItemsBinding languageItemsBinding;
-        NoteLanguage noteLanguage;
+        PapagoItemsBinding papagoItemsBinding;
+        Language language;
         OnItemClickListener listener;
 
-        public MyViewHolder(@NonNull LanguageItemsBinding binding) {
+        public MyViewHolder(@NonNull PapagoItemsBinding binding) {
             super(binding.getRoot());
-            this.languageItemsBinding = binding;
+            this.papagoItemsBinding = binding;
 
             binding.getRoot().setOnClickListener(v -> {
                 int position = getAdapterPosition();
 
                 if (listener != null) {
-                    listener.onItemClick(MyViewHolder.this, v, position , noteLanguage);
+                    listener.onItemClick(MyViewHolder.this, v, position , language);
                 }
             });
         }
 
-        public void bind(NoteLanguage noteLanguage){
-            this.noteLanguage = noteLanguage;
+        public void bind(Language language){
+            this.language = language;
         }
 
         public void setOnItemClickListener(OnItemClickListener listener) {
@@ -97,9 +96,9 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
 
     class PostDiffCallback extends DiffUtil.Callback {
 
-        private final List<NoteLanguage> oldPosts, newPosts;
+        private final List<Language> oldPosts, newPosts;
 
-        public PostDiffCallback(List<NoteLanguage> oldPosts, List<NoteLanguage> newPosts) {
+        public PostDiffCallback(List<Language> oldPosts, List<Language> newPosts) {
             this.oldPosts = oldPosts;
             this.newPosts = newPosts;
         }

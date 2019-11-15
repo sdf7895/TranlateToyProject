@@ -16,6 +16,7 @@ import com.example.toyproject.MainInterface;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.LanguageSelectViewBinding;
 import com.example.toyproject.view.RecyclerViewAdapter.LanguageSelectAdapter;
+import com.example.toyproject.view.Utils.AnimationUtil;
 import com.example.toyproject.view.Utils.ChangeUtil;
 import com.example.toyproject.view.Utils.HideUtil;
 import com.example.toyproject.view.Utils.LinearLayoutManagerUtil;

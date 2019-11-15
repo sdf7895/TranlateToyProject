@@ -1,5 +1,9 @@
 package com.example.toyproject.Model.retrofit2;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import com.example.toyproject.MainActivity;
 import com.example.toyproject.Model.retrofit2.retrofit2Interface.PapagoService;
 import com.example.toyproject.Model.retrofit2.retrofit2Interface.TranslateService;
 import com.example.toyproject.Present.TotalPresent;

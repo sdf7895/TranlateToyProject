@@ -1,7 +1,5 @@
 package com.example.toyproject;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,14 +10,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.example.toyproject.Model.Language;
-import com.example.toyproject.Model.Model;
 import com.example.toyproject.databinding.ActivityMainBinding;
 import com.example.toyproject.view.ChangeLanguageSelectView;
 import com.example.toyproject.view.PapagoFragment;
 import com.example.toyproject.view.RecyclerView;
-import com.example.toyproject.view.RecyclerViewAdapter.RecyclerViewAdpater;
 import com.example.toyproject.view.SetLanguageSelectView;
 
 public class MainActivity extends AppCompatActivity implements MainInterface, NavigationView.OnNavigationItemSelectedListener {
@@ -110,26 +104,23 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     }
 
     public void setSeletFragment(View view) {
-        binding.toolbar.setTitle("모든언어");
+        binding.toolbar.setTitle("도착언어");
         getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.translate_down,R.anim.translate_up,R.anim.translate_down,R.anim.translate_up)
                 .replace(R.id.fragment, changeLanguageSelectView)
                 .addToBackStack(null)
                 .commit();
     }
 
     public void setSeletFragment2(View view) {
-        binding.toolbar.setTitle("모든언어");
+        binding.toolbar.setTitle("출발언어");
         getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.translate_down,R.anim.translate_up,R.anim.translate_down,R.anim.translate_up)
                 .replace(R.id.fragment, setLanguageSelectView)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    @Override
-    public void setData(String text, String change) {
-        Test(text,change);
     }
 
     @Override
@@ -138,19 +129,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     @Override
     public void setData2(String setLanguage) {papagoFragment.getData2(setLanguage);}
 
-    public void Test(String text,String change){
-        RecyclerViewAdpater recyclerViewAdpater = new RecyclerViewAdpater(getApplicationContext());
-        Model model = ViewModelProviders.of(this).get(Model.class);
-        model.getAllLanguage().observe(this, languages -> recyclerViewAdpater.setData(languages));
-
-        if(text.trim().length() == 0) return;
-        if(change.trim().length() == 0) return;
-
-        Language language = new Language();
-        language.setText(text);
-        language.setTranslatedText(change);
-        model.insert(language);
-    }
 }
 
 

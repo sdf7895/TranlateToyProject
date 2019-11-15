@@ -25,6 +25,6 @@ public interface LanguageDao {
     @Delete
     void deleteLanguage(Language language);
 
-    @Query("SELECT DISTINCT * from language_table ORDER BY id ASC")
+    @Query("SELECT * from language_table ORDER BY id DESC")
     LiveData<List<Language>> getAllLanguage();
 }

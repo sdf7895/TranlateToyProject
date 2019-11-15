@@ -7,6 +7,7 @@ import com.example.toyproject.databinding.LanguageSelectViewBinding;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
 import com.example.toyproject.databinding.RecyclerViewBinding;
 import com.example.toyproject.view.RecyclerViewAdapter.LanguageSelectAdapter;
+import com.example.toyproject.view.RecyclerViewAdapter.PapgoRecyclerViewAdpater;
 import com.example.toyproject.view.RecyclerViewAdapter.RecyclerViewAdpater;
 
 public class LinearLayoutManagerUtil {
@@ -23,4 +24,9 @@ public class LinearLayoutManagerUtil {
         languageSelectViewBinding.recyclerview.setAdapter(languageSelectAdapter);
     }
 
+    public static void PapagoFramgent(Context context, PapagoFragmentBinding papagoFragmentBinding, PapgoRecyclerViewAdpater papagoRecyclerViewAdpater){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        papagoFragmentBinding.recyclerview.setLayoutManager(linearLayoutManager);
+        papagoFragmentBinding.recyclerview.setAdapter(papagoRecyclerViewAdpater);
+    }
 }
