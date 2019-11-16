@@ -15,6 +15,7 @@ import com.example.toyproject.view.ChangeLanguageSelectView;
 import com.example.toyproject.view.PapagoFragment;
 import com.example.toyproject.view.RecyclerView;
 import com.example.toyproject.view.SetLanguageSelectView;
+import com.example.toyproject.view.Utils.ObserveUtil;
 
 public class MainActivity extends AppCompatActivity implements MainInterface, NavigationView.OnNavigationItemSelectedListener {
     private PapagoFragment papagoFragment;

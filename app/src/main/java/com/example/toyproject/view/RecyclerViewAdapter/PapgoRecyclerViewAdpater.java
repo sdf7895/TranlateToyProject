@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toyproject.Model.Language;
+import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoItemsBinding;
 
 import java.util.ArrayList;
@@ -18,14 +19,19 @@ public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecycler
     Context context;
     private List<Language> items;
     OnItemClickListener listener;
+    NoteOnItemClickListener noteListener;
+
+    public PapgoRecyclerViewAdpater(Context context) {
+        this.context = context;
+        this.items = new ArrayList<>();
+    }
 
     public static interface OnItemClickListener {
         void onItemClick(RecyclerView.ViewHolder viewHolder, View view, int position, Language language);
     }
 
-    public PapgoRecyclerViewAdpater(Context context) {
-        this.context = context;
-        this.items = new ArrayList<>();
+    public static interface NoteOnItemClickListener {
+        void onItemClick(RecyclerView.ViewHolder viewHolder, View view, int position, Language language);
     }
 
     @NonNull
@@ -40,13 +46,22 @@ public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecycler
         viewHolder.papagoItemsBinding.changelg.setText(language.getText());
         viewHolder.papagoItemsBinding.changelg2.setText(language.getTranslatedText());
 
+        viewHolder.papagoItemsBinding.insertbutton.setOnClickListener(v -> noteListener.onItemClick(viewHolder,v,position,language));
 
         viewHolder.setOnItemClickListener(listener);
         viewHolder.bind(language);
     }
 
+    public Language getPosition(int position){
+        return items.get(position);
+    }
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void noteSetOnItemClickListener(NoteOnItemClickListener noteListener) {
+        this.noteListener = noteListener;
     }
 
     @Override

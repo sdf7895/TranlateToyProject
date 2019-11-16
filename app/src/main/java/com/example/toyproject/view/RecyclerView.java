@@ -38,10 +38,15 @@ public class RecyclerView extends Fragment {
         model = ViewModelProviders.of(this).get(NoteModel.class);
         model.getAllLanguage().observe(this, notelanguages -> recyclerViewAdpater.setData(notelanguages));
 
+        deleteLanguage();
 
         LinearLayoutManagerUtil.RecyclerViewUtil(getContext(),binding,recyclerViewAdpater);
 
         return binding.getRoot();
+    }
+
+    public void deleteLanguage(){
+        recyclerViewAdpater.setOnItemClickListener((viewHoder,view,position,noteLanguage) -> model.deleteUser(noteLanguage));
     }
 
 }

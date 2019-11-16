@@ -40,9 +40,8 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerViewAdpate
         NoteLanguage noteLanguage = items.get(position);
         viewHolder.languageItemsBinding.changelg.setText(noteLanguage.getText());
         viewHolder.languageItemsBinding.changelg2.setText(noteLanguage.getTranslatedText());
+        viewHolder.languageItemsBinding.insertbutton.setOnClickListener(v -> listener.onItemClick(viewHolder,v,position,noteLanguage));
 
-
-        viewHolder.setOnItemClickListener(listener);
         viewHolder.bind(noteLanguage);
     }
 

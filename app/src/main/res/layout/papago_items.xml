@@ -22,8 +22,7 @@
                     android:id="@+id/changelg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:textSize="25dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -35,13 +34,27 @@
 
                 <TextView
                     android:id="@+id/changelg"
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/insertbutton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="350dp"
+                android:background="@drawable/note_insert_click"/>
 
         </LinearLayout>
 
