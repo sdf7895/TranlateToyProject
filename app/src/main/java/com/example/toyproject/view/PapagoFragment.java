@@ -3,20 +3,19 @@ package com.example.toyproject.view;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.toyproject.MainActivity;
-import com.example.toyproject.MainInterface;
-import com.example.toyproject.Model.Language;
+import com.example.toyproject.getDataInterface.MainInterface;
 import com.example.toyproject.Model.Model;
 import com.example.toyproject.Present.MyPresent;
 import com.example.toyproject.Present.TotalPresent;
@@ -26,6 +25,7 @@ import com.example.toyproject.view.RecyclerViewAdapter.PapgoRecyclerViewAdpater;
 import com.example.toyproject.view.RecyclerViewAdapter.RecyclerViewAdpater;
 import com.example.toyproject.view.Utils.AnimationUtil;
 import com.example.toyproject.view.Utils.ChangeUtil;
+import com.example.toyproject.view.Utils.HideUtil;
 import com.example.toyproject.view.Utils.ItemTouchUtil;
 import com.example.toyproject.view.Utils.LinearLayoutManagerUtil;
 import com.example.toyproject.view.Utils.ObserveUtil;
@@ -72,7 +72,7 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
         model = ViewModelProviders.of(this).get(Model.class);
         model.getAllLanguage().observe(this, languages -> papagoRecyclerViewAdpater.setData(languages));
 
-        ItemTouchUtil.papagoSwipe(model,papagoRecyclerViewAdpater,binding);
+        ItemTouchUtil.papagoSwipeDelete(model,papagoRecyclerViewAdpater,binding);
 
         noteLanguageInsert();
 
@@ -80,12 +80,24 @@ public class PapagoFragment extends Fragment implements TotalPresent.Toshow {
         ChangeUtil.changeText2(changeLanguage,binding);
 
         LinearLayoutManagerUtil.PapagoFramgent(getContext(),binding,papagoRecyclerViewAdpater);
+
         return binding.getRoot();
     }
 
     public void setData(View view){
         myPresent = new MyPresent(this);
         myPresent.setData(setLanguage,changeLanguage,binding.editText.getText().toString());
+        HideUtil.hideKeyboard(this);
+    }
+
+    public void languageSearch(View view){
+        binding.editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                setData(v);
+                HideUtil.hideKeyboard(this);
+            }
+            return false;
+        });
     }
 
     @Override

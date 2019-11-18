@@ -7,22 +7,19 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.toyproject.MainInterface;
+import com.example.toyproject.getDataInterface.MainInterface;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.LanguageSelectViewBinding;
 import com.example.toyproject.view.RecyclerViewAdapter.LanguageSelectAdapter;
-import com.example.toyproject.view.Utils.AnimationUtil;
 import com.example.toyproject.view.Utils.ChangeUtil;
 import com.example.toyproject.view.Utils.HideUtil;
 import com.example.toyproject.view.Utils.LinearLayoutManagerUtil;
 import com.example.toyproject.view.Utils.SetLanguageList.ListLanguage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SetLanguageSelectView extends Fragment {

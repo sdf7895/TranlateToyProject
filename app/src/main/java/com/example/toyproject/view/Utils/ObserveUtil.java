@@ -2,7 +2,6 @@ package com.example.toyproject.view.Utils;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 
 import com.example.toyproject.Model.Language;
 import com.example.toyproject.Model.Model;
@@ -10,6 +9,7 @@ import com.example.toyproject.Model.NoteRepository.NoteLanguage;
 import com.example.toyproject.Model.NoteRepository.NoteModel;
 import com.example.toyproject.view.RecyclerViewAdapter.PapgoRecyclerViewAdpater;
 import com.example.toyproject.view.RecyclerViewAdapter.RecyclerViewAdpater;
+
 
 public class ObserveUtil {
 
@@ -40,5 +40,6 @@ public class ObserveUtil {
         noteLanguage.setText(text);
         noteLanguage.setTranslatedText(change);
         model.insert(noteLanguage);
+
     }
 }

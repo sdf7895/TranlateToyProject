@@ -1,6 +1,8 @@
 package com.example.toyproject.view.RecyclerViewAdapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -12,14 +14,18 @@ import com.example.toyproject.Model.Language;
 import com.example.toyproject.R;
 import com.example.toyproject.databinding.PapagoItemsBinding;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecyclerViewAdpater.MyViewHolder> {
     Context context;
-    private List<Language> items;
+    List<Language> items;
     OnItemClickListener listener;
     NoteOnItemClickListener noteListener;
+    Bitmap bitmap;
+    boolean state = true;
 
     public PapgoRecyclerViewAdpater(Context context) {
         this.context = context;
@@ -45,8 +51,7 @@ public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecycler
         Language language = items.get(position);
         viewHolder.papagoItemsBinding.changelg.setText(language.getText());
         viewHolder.papagoItemsBinding.changelg2.setText(language.getTranslatedText());
-
-        viewHolder.papagoItemsBinding.insertbutton.setOnClickListener(v -> noteListener.onItemClick(viewHolder,v,position,language));
+        noteInsertButton(viewHolder,position,language);
 
         viewHolder.setOnItemClickListener(listener);
         viewHolder.bind(language);
@@ -62,6 +67,19 @@ public class PapgoRecyclerViewAdpater extends RecyclerView.Adapter<PapgoRecycler
 
     public void noteSetOnItemClickListener(NoteOnItemClickListener noteListener) {
         this.noteListener = noteListener;
+    }
+
+    private void noteInsertButton(MyViewHolder viewHolder,int position,Language language){
+        viewHolder.papagoItemsBinding.insertbutton.setOnClickListener(v -> {
+            if(state == true) {
+                noteListener.onItemClick(viewHolder, v, position, language);
+                viewHolder.papagoItemsBinding.insertbutton.setBackgroundResource(R.drawable.star1);
+                state = false;
+            }else{
+                viewHolder.papagoItemsBinding.insertbutton.setBackgroundResource(R.drawable.star2);
+                state = true;
+            }
+        });
     }
 
     @Override

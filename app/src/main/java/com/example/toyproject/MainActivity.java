@@ -1,21 +1,23 @@
 package com.example.toyproject;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.example.toyproject.databinding.ActivityMainBinding;
+import com.example.toyproject.getDataInterface.MainInterface;
 import com.example.toyproject.view.ChangeLanguageSelectView;
 import com.example.toyproject.view.PapagoFragment;
 import com.example.toyproject.view.RecyclerView;
 import com.example.toyproject.view.SetLanguageSelectView;
-import com.example.toyproject.view.Utils.ObserveUtil;
 
 public class MainActivity extends AppCompatActivity implements MainInterface, NavigationView.OnNavigationItemSelectedListener {
     private PapagoFragment papagoFragment;
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
         changeLanguageSelectView = ChangeLanguageSelectView.ChangelanguageSelectView();
         setLanguageSelectView = SetLanguageSelectView.setLanguageSelectView();
 
+        binding.toolbar.setTitle(R.string.translate);
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("번역");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
@@ -44,16 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
         binding.navView.setNavigationItemSelectedListener(this);
 
         startFragment();
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override
@@ -105,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     }
 
     public void setSeletFragment(View view) {
-        binding.toolbar.setTitle("도착언어");
+        binding.toolbar.setTitle(R.string.getdata);
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.translate_down,R.anim.translate_up,R.anim.translate_down,R.anim.translate_up)
@@ -115,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface, Na
     }
 
     public void setSeletFragment2(View view) {
-        binding.toolbar.setTitle("출발언어");
+        binding.toolbar.setTitle(R.string.postdata);
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.translate_down,R.anim.translate_up,R.anim.translate_down,R.anim.translate_up)

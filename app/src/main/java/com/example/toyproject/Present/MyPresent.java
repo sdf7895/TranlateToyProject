@@ -2,6 +2,8 @@ package com.example.toyproject.Present;
 
 import com.example.toyproject.Model.retrofit2.Translate;
 
+import java.io.File;
+
 public class MyPresent implements TotalPresent.GetData {
     private TotalPresent.Toshow toShow;
     Translate translate;

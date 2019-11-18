@@ -1,6 +1,6 @@
 package com.example.toyproject.view.Utils;
 
-import com.example.toyproject.MainInterface;
+import com.example.toyproject.getDataInterface.MainInterface;
 import com.example.toyproject.databinding.PapagoFragmentBinding;
 
 public class ChangeUtil {

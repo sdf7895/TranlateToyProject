@@ -1,4 +1,4 @@
-package com.example.toyproject;
+package com.example.toyproject.getDataInterface;
 
 public interface MainInterface {
     void setData(String change);

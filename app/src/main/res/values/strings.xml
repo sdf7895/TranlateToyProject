@@ -5,6 +5,9 @@
     <string name="change">영어로 번역이필요하다면 en 입력</string>
     <string name="language">입력:</string>
     <string name="language2">번역된 언어:</string>
+    <string name="translate">번역</string>
+    <string name="getdata">도착언어</string>
+    <string name="postdata">출발언어</string>
 
     ----------------color----------------------------
     <color name="layoutcolor">#585858</color>

@@ -30,7 +30,7 @@
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="left|center"
+
                 android:onClick="@{activity::setSeletFragment2}"
                 android:text="한국어"
                 android:textSize="20dp" />
@@ -39,6 +39,7 @@
                 android:id="@+id/button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/search"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="@{papagoFragment::setData}" />
 
@@ -48,7 +49,6 @@
                 android:layout_height="50dp"
                 android:background="@color/limpidity"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="right|center"
                 android:onClick="@{activity::setSeletFragment}"
                 android:text="영어"
                 android:textSize="20dp" />
@@ -77,6 +77,9 @@
                 android:layout_marginTop="10dp"
                 android:background="@null"
                 android:hint="텍스트를입력해주세요"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:onClick="@{papagoFragment::languageSearch}"
                 android:textSize="30dp"/>
 
         </LinearLayout>
